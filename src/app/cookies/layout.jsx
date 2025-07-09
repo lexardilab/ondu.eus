@@ -1,9 +1,8 @@
 import Navbar from "@/components/Navbar";
 import "../globals.css";
-
 export const metadata = {
-  title: "Ondu Zentroa",
-  description: "Ondu es un centro de nutrición. Te estamos esperando",
+  title: "Harri | Journal",
+  description: "Created in Euskal Herria",
 };
 
 export default function RootLayout({ children }) {
