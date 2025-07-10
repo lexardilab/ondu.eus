@@ -1,4 +1,6 @@
-import './globals.css'
+import CookieBanner from "@/components/CookieBanner";
+import "./globals.css";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 // src/app/layout.jsx
 export const metadata = {
@@ -13,10 +15,15 @@ export const metadata = {
   // Puedes añadir más: openGraph, twitter, etc.
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children, params }) {
+  const { lang } = await params
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        <GoogleAnalytics /> 
+        <CookieBanner lang={lang} />
+        {children}
+      </body>
     </html>
   );
 }
