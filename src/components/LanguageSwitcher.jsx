@@ -1,31 +1,35 @@
 'use client'
 
-import { useRouter, usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 export default function LanguageSwitcher() {
-  const router = useRouter()
+  const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
+
+  // Para que el componente solo renderice en cliente
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+
+  const currentLang = pathname.split('/')[1]
+  const otherLang = currentLang === 'es' ? 'eu' : 'es'
 
   const handleChange = (e) => {
-    const newLocale = e.target.value
-
-    // Cambia la ruta agregando el nuevo locale manualmente
+    const selectedLang = e.target.value
     const segments = pathname.split('/')
-    segments[1] = newLocale // reemplaza el locale actual
+    segments[1] = selectedLang
     const newPath = segments.join('/')
-
     router.push(newPath)
   }
 
   return (
-    <select
-      onChange={handleChange}
-      className="border rounded px-2 py-1"
-      defaultValue={pathname.split('/')[1]} // idioma actual
-    >
+    <select value={currentLang} onChange={handleChange} className="p-1 border rounded">
       <option value="es">Castellano</option>
       <option value="eu">Euskera</option>
     </select>
   )
 }
-
