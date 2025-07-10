@@ -40,6 +40,9 @@ export default async function Page({ params }) {
   if (slug === 'contacto') {
     return <ContactPage data={pageData} />
   }
+  if (slug === 'home') {
+    return <HomePage data={data} />
+  }
 
   // Puedes añadir más condiciones para otros slugs
   // if (slug === 'nutricion') return <NutritionPage data={pageData} />

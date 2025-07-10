@@ -12,8 +12,6 @@ export default async function LangLayout({ children, params }) {
           padding: "1rem",
         }}
       >
-        <h1>Mi Web Multilingüe</h1>
-        <LanguageSwitcher />
       </header>
       <main>{children}</main>
     </>
