@@ -4,18 +4,18 @@ export async function generateMetadata({ params }) {
   const { lang } = params;
   const baseUrl = "https://ondu.eus";
   const path = `/${lang}`;
-  
+
   const metadata = {
     es: {
       title: "Ondu",
       description: "Centro de nutrición y salud",
-      image: `${baseUrl}/images/og-image-es.jpg`, // Cambia esta ruta a la imagen que quieras
+      image: `${baseUrl}/images/og-image-es.jpg`,
       locale: "es_ES",
     },
     eu: {
       title: "Ondu",
       description: "Nutrizio eta osasun zentroa",
-      image: `${baseUrl}/images/og-image-eu.jpg`, // Cambia esta ruta a la imagen que quieras
+      image: `${baseUrl}/images/og-image-eu.jpg`,
       locale: "eu_ES",
     },
   };
@@ -25,6 +25,13 @@ export async function generateMetadata({ params }) {
   return {
     title: meta.title,
     description: meta.description,
+    alternates: {
+      canonical: baseUrl + path,
+      languages: {
+        es: baseUrl + "/es",
+        eu: baseUrl + "/eu",
+      },
+    },
     openGraph: {
       title: meta.title,
       description: meta.description,
@@ -46,13 +53,6 @@ export async function generateMetadata({ params }) {
       title: meta.title,
       description: meta.description,
       images: [meta.image],
-    },
-    alternates: {
-      canonical: baseUrl + path,
-      languages: {
-        es: baseUrl + "/es",
-        eu: baseUrl + "/eu",
-      },
     },
   };
 }
