@@ -8,7 +8,7 @@ export default function GoogleAnalytics() {
     if (consent === "true") {
       // Añade el script de Google Analytics
       const script = document.createElement("script");
-      script.src = "https://www.googletagmanager.com/gtag/js?id=TU_ID_GA";
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-QTZW800E7Q";
       script.async = true;
       document.head.appendChild(script);
 
