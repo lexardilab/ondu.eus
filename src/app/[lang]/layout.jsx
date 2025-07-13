@@ -1,6 +1,7 @@
 import CookieBanner from "@/components/CookieBanner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Navbar from "@/components/Navbar";
 
 export async function generateMetadata({ params }) {
   const { lang } = params;
@@ -58,7 +59,6 @@ export async function generateMetadata({ params }) {
     },
   };
 }
-
 export default function LangLayout({ children, params }) {
   const { lang } = params;
 
@@ -74,6 +74,7 @@ export default function LangLayout({ children, params }) {
       <main>
         <GoogleAnalytics />
         <CookieBanner lang={lang} />
+        <Navbar lang={lang} />
         {children}
       </main>
     </>
