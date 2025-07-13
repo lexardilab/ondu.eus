@@ -1,6 +1,5 @@
 import CookieBanner from "@/components/CookieBanner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Navbar from "@/components/Navbar";
 
 export async function generateMetadata({ params }) {
@@ -64,13 +63,6 @@ export default function LangLayout({ children, params }) {
 
   return (
     <>
-      <header
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "1rem",
-        }}
-      ></header>
       <main>
         <GoogleAnalytics />
         <CookieBanner lang={lang} />
