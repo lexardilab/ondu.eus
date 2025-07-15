@@ -1,134 +1,120 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const currentLang = pathname.split("/")[1] || "es";
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const changeLanguage = (lang) => {
-    const parts = pathname.split("/");
-    parts[1] = lang;
-    router.push(parts.join("/"));
-    setIsOpen(false); // cerrar menú al cambiar idioma
+  const [openDropdown, setOpenDropdown] = useState(null); // 'nutricion' | 'alimentacion' | null
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const dropdownRefs = {
+    nutricion: useRef(null),
+    alimentacion: useRef(null),
   };
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        openDropdown &&
+        dropdownRefs[openDropdown] &&
+        !dropdownRefs[openDropdown].current.contains(e.target)
+      ) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [openDropdown]);
 
   return (
-    <nav className="">
-      <div className="flex items-center justify-between px-4 py-4">
-        {/* Logo o título */}
-        <Link href={`/${currentLang}`}>
-          <Image
-            src="/logo.svg"
-            alt="Logotipo Ondu Centro de nutriciín y salud"
-            width={200}
-            height={500}
-          />
-        </Link>
-        {/* Botón hamburguesa para móvil */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {isOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
-        {/* Menú principal desktop */}
-        <div className="hidden md:flex md:items-center md:space-x-6">
-          <Link
-            href={`/${currentLang}`}
-            className="hover:underline"
-          >
-            {currentLang === "es" ? "Inicio" : "Hasiera"}
-          </Link>
-          <Link
-            href={`/${currentLang}/about`}
-            className="hover:underline"
-          >
-            {currentLang === "es" ? "Acerca de" : "Guri buruz"}
-          </Link>
+    <nav className="sticky top-0 z-50 bg-white shadow-md">
+      <div className="flex items-center justify-between px-4 py-3 mx-auto max-w-7xl">
+        {/* Logo */}
+        
+        <Link href="/"><Image src="/logo.svg" alt="" width="200" height="100" /></Link>
 
-          {/* Selector idiomas desktop */}
-          <LanguageSwitcher />
+        {/* Desktop menu */}
+        <div className="items-center hidden space-x-6 md:flex">
+
+          {/* Dropdown: Servicios */}
+          <div className="relative" ref={dropdownRefs.nutricion}>
+            <button
+              onClick={() =>
+                setOpenDropdown(openDropdown === 'nutricion' ? null : 'nutricion')
+              }
+              className="flex items-center gap-1 text-gray-700 hover:text-primary"
+            >
+              Nutrición ▾
+            </button>
+            {openDropdown === 'nutricion' && (
+              <div className="absolute left-0 z-20 w-48 mt-2 bg-white border rounded shadow-lg top-full">
+                <Link href="/servicios/consulta" className="block px-4 py-2 text-sm hover:bg-gray-100">Nutrición deportiva</Link>
+                <Link href="/servicios/peso" className="block px-4 py-2 text-sm hover:bg-gray-100">Nutrición clinica</Link>
+              </div>
+            )}
+          </div>
+          <Link href="/sobre-mi" className="text-gray-700 hover:text-primary">Perdida de peso</Link>
+
+          {/* Dropdown: Recursos */}
+          <div className="relative" ref={dropdownRefs.alimentacion}>
+            <button
+              onClick={() =>
+                setOpenDropdown(openDropdown === 'alimentacion' ? null : 'alimentacion')
+              }
+              className="flex items-center gap-1 text-gray-700 hover:text-primary"
+            >
+              Alimentación ▾
+            </button>
+            {openDropdown === 'alimentacion' && (
+              <div className="absolute left-0 z-20 w-48 mt-2 bg-white border rounded shadow-lg top-full">
+                <Link href="/recursos/blog" className="block px-4 py-2 text-sm hover:bg-gray-100">Blog</Link>
+                <Link href="/recursos/guias" className="block px-4 py-2 text-sm hover:bg-gray-100">Guías</Link>
+                <Link href="/recursos/videos" className="block px-4 py-2 text-sm hover:bg-gray-100">Videos</Link>
+              </div>
+            )}
+          </div>
+          <Link href="/contacto" className="text-gray-700 hover:text-primary">Sobre mi</Link>
+
+          <Link href="/contacto" className="text-gray-700 hover:text-primary">Contacto</Link>
+          <Link href="/contacto" className="text-gray-700 hover:text-primary">Regala salud</Link>
         </div>
+
+        {/* Botón menú móvil */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="text-2xl text-gray-700 md:hidden"
+          aria-label="Abrir menú"
+        >
+          {mobileOpen ? '✕' : '☰'}
+        </button>
       </div>
 
       {/* Menú móvil */}
-      {isOpen && (
-        <div className="mt-4 space-y-4 md:hidden">
-          <Link
-            href={`/${currentLang}`}
-            className="block hover:underline"
-            onClick={() => setIsOpen(false)}
-          >
-            {currentLang === "es" ? "Inicio" : "Hasiera"}
-          </Link>
-          <Link
-            href={`/${currentLang}/about`}
-            className="block hover:underline"
-            onClick={() => setIsOpen(false)}
-          >
-            {currentLang === "es" ? "Acerca de" : "Guri buruz"}
-          </Link>
-          <div className="flex mt-2 space-x-4">
-            <button
-              onClick={() => changeLanguage("eu")}
-              disabled={currentLang === "eu"}
-              className={`px-3 py-1 rounded ${
-                currentLang === "eu"
-                  ? "bg-indigo-600 cursor-default"
-                  : "bg-indigo-800 hover:bg-indigo-700"
-              }`}
-              aria-current={currentLang === "eu" ? "page" : undefined}
-            >
-              Euskera
-            </button>
-            <button
-              onClick={() => changeLanguage("es")}
-              disabled={currentLang === "es"}
-              className={`px-3 py-1 rounded ${
-                currentLang === "es"
-                  ? "bg-indigo-600 cursor-default"
-                  : "bg-indigo-800 hover:bg-indigo-700"
-              }`}
-              aria-current={currentLang === "es" ? "page" : undefined}
-            >
-              Castellano
-            </button>
+      {mobileOpen && (
+        <div className="px-4 pb-4 space-y-3 bg-white border-t shadow-sm md:hidden">
+          <Link href="/sobre-mi" className="block py-2 text-gray-700">Sobre mí</Link>
+
+          {/* Dropdown Servicios */}
+          <div>
+            <p className="font-medium text-gray-700">Servicios</p>
+            <div className="pl-4">
+              <Link href="/servicios/consulta" className="block py-1 text-gray-600">Consulta Nutricional</Link>
+              <Link href="/servicios/peso" className="block py-1 text-gray-600">Pérdida de Peso</Link>
+              <Link href="/servicios/deporte" className="block py-1 text-gray-600">Nutrición Deportiva</Link>
+            </div>
           </div>
+
+          {/* Dropdown Recursos */}
+          <div>
+            <p className="font-medium text-gray-700">Recursos</p>
+            <div className="pl-4">
+              <Link href="/recursos/blog" className="block py-1 text-gray-600">Blog</Link>
+              <Link href="/recursos/guias" className="block py-1 text-gray-600">Guías</Link>
+              <Link href="/recursos/videos" className="block py-1 text-gray-600">Videos</Link>
+            </div>
+          </div>
+
+          <Link href="/contacto" className="block py-2 text-gray-700">Contacto</Link>
         </div>
       )}
     </nav>

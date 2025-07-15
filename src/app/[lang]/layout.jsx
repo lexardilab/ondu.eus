@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 
 export async function generateMetadata({ params }) {
   const { lang } = params;
+
   const baseUrl = "https://ondu.eus";
   const path = `/${lang}`;
 
@@ -58,17 +59,16 @@ export async function generateMetadata({ params }) {
     },
   };
 }
-export default function LangLayout({ children, params }) {
+
+export default async function LangLayout({ children, params }) {
   const { lang } = params;
 
   return (
-    <>
-      <main>
-        <GoogleAnalytics />
-        <CookieBanner lang={lang} />
-        <Navbar lang={lang} />
-        {children}
-      </main>
-    </>
+    <main>
+      <GoogleAnalytics />
+      <CookieBanner lang={lang} />
+      <Navbar lang={lang} />
+      {children}
+    </main>
   );
 }

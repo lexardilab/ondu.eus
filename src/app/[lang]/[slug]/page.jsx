@@ -1,16 +1,16 @@
-import { createClient } from 'next-sanity'
 import { PortableText } from '@portabletext/react'
-import ContactPage from '../../../components/pages/ContactPage'
-// Importa otros componentes según páginas que tengas, por ejemplo:
-// import NutritionPage from '../../../components/pages/NutritionPage'
+import { client } from '@/sanity/lib/client'
 
-const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-  useCdn: false,
-  apiVersion: '2023-07-10',
-})
+// Importa componentes específicos para ciertas páginas
+import ContactPage from '@/components/pages/ContactPage'
+import HomePage from '@/components/pages/HomePage'
+import NutricionPage from '@/components/pages/NutricionPage'
 
+// import NutritionPage from '@/components/pages/NutritionPage'
+
+/**
+ * Consulta a Sanity por slug
+ */
 async function getPage(slug) {
   const query = `*[_type == "page" && slug.current == $slug][0]{
     title_es,
@@ -23,35 +23,55 @@ async function getPage(slug) {
 }
 
 export default async function Page({ params }) {
-  const { lang, slug } = await params
+  const { lang, slug } = params
+
   const data = await getPage(slug)
 
   if (!data) {
-    return <p>Página no encontrada</p>
+    return <p className="mt-10 text-center text-red-600">Página no encontrada</p>
   }
 
-  // Elegir contenido y título según idioma
   const pageData = {
     title: lang === 'es' ? data.title_es : data.title_eu,
     content: lang === 'es' ? data.content_es : data.content_eu,
   }
 
-  // Renderizado condicional según slug
-  if (slug === 'contacto') {
-    return <ContactPage data={pageData} />
-  }
-  if (slug === 'home') {
-    return <HomePage data={data} />
+  // Mapeo de slugs con componentes específicos
+  const customPages = {
+    contacto: ContactPage,
+    home: HomePage,
+    nutricion: NutricionPage,
+    // nutricion: NutritionPage,
   }
 
-  // Puedes añadir más condiciones para otros slugs
-  // if (slug === 'nutricion') return <NutritionPage data={pageData} />
+  const CustomComponent = customPages[slug]
 
-  // Por defecto, renderiza genérico:
+  if (CustomComponent) {
+    return <CustomComponent data={pageData} />
+  }
+
+  // Render genérico si no hay componente específico
   return (
-    <main className="">
-      <h1 className="">{pageData.title}</h1>
+    <main className="max-w-3xl px-4 py-8 mx-auto">
+      <h1 className="mb-6 text-2xl font-bold">{pageData.title}</h1>
       <PortableText value={pageData.content} />
     </main>
+  )
+}
+import { groq } from 'next-sanity'
+
+export async function generateStaticParams() {
+  const query = groq`*[_type == "page"]{ "slug": slug.current }`
+  const slugs = await client.fetch(query)
+
+  // Idiomas que tienes activos
+  const languages = ['es', 'eu']
+
+  // Combinaciones: [{ lang: 'es', slug: 'contacto' }, ...]
+  return slugs.flatMap(({ slug }) =>
+    languages.map(lang => ({
+      lang,
+      slug,
+    }))
   )
 }
