@@ -27,7 +27,7 @@ export default function LanguageSwitcher() {
   }
 
   return (
-    <select value={currentLang} onChange={handleChange} className="">
+    <select value={currentLang} onChange={handleChange} className="text-[#5f7254]">
       <option value="es">Es</option>
       <option value="eu">Eu</option>
     </select>

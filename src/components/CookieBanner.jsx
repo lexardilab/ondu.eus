@@ -1,42 +1,54 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 export default function CookieBanner({ lang }) {
-  const [show, setShow] = useState(false);
+  const [accepted, setAccepted] = useState(false);
+  const [rejected, setRejected] = useState(false);
+  const [checkedStorage, setCheckedStorage] = useState(false);
 
   useEffect(() => {
     const consent = localStorage.getItem("cookiesAccepted");
-    if (consent === null) setShow(true); // Mostrar banner si no hay respuesta
+    const declined = localStorage.getItem("cookiesRejected");
+    if (consent === "true") setAccepted(true);
+    if (declined === "true") setRejected(true);
+    setCheckedStorage(true);
   }, []);
 
-  const onAccept = () => {
+  function acceptCookies() {
     localStorage.setItem("cookiesAccepted", "true");
-    setShow(false);
-  };
+    localStorage.removeItem("cookiesRejected");
+    setAccepted(true);
+    setRejected(false);
+  }
 
-  const onReject = () => {
-    localStorage.setItem("cookiesAccepted", "false");
-    setShow(false);
-  };
+  function rejectCookies() {
+    localStorage.setItem("cookiesRejected", "true");
+    localStorage.removeItem("cookiesAccepted");
+    setRejected(true);
+    setAccepted(false);
+  }
 
-  if (!show) return null;
+  if (!checkedStorage) return null;
+  if (accepted || rejected) return null;
 
   return (
-    <div className="fixed bottom-0 w-full bg-[#656239] text-white p-4 flex justify-between items-center z-50">
-      <p>{lang === "eu" ? "Cookieak erabiltzen ditugu zure esperientzia hobetzeko." : "Usamos cookies para mejorar tu experiencia."}</p>
-      <div>
+    <div className="fixed bottom-0 left-0 right-0 z-50 flex flex-col sm:flex-row items-center justify-between p-4 bg-[#5f7254] text-[#f5ecdc]">
+      <p className="mb-2 text-sm sm:mb-0">
+        {lang === 'eu' ? "Cookieak onartzen dituzu?" : "¿Aceptas las cookies?"}
+      </p>
+      <div className="flex gap-2">
         <button
-          onClick={onReject}
-          className="px-3 py-1 mr-2 bg-white text-[#656239] rounded"
+          onClick={acceptCookies}
+          className="px-4 py-2 bg-[#f5ecdc] text-[#5f7254] font-semibold rounded hover:brightness-90 transition"
         >
-          {lang === "eu" ? "Ukatu" : "Rechazar"}
+          {lang === 'eu' ? "Onartu" : "Aceptar"}
         </button>
         <button
-          onClick={onAccept}
-          className="px-3 py-1 bg-white text-[#656239] rounded"
+          onClick={rejectCookies}
+          className="px-4 py-2 bg-[#5f7254] border border-[#f5ecdc] text-[#f5ecdc] font-semibold rounded hover:bg-[#4f5e46] transition"
         >
-          {lang === "eu" ? "Onartu" : "Aceptar"}
+          {lang === 'eu' ? "Ezeztatu" : "Rechazar"}
         </button>
       </div>
     </div>

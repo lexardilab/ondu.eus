@@ -1,8 +1,10 @@
 import CookieBanner from "@/components/CookieBanner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Navbar from "@/components/Navbar";
+import { getPages } from "@/lib/pages";
 
 export async function generateMetadata({ params }) {
+  params = await params;
   const { lang } = params;
 
   const baseUrl = "https://ondu.eus";
@@ -61,13 +63,16 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function LangLayout({ children, params }) {
+  params = await params;
   const { lang } = params;
+
+  const pages = await getPages();
 
   return (
     <main>
       <GoogleAnalytics />
       <CookieBanner lang={lang} />
-      <Navbar lang={lang} />
+      <Navbar lang={lang} pages={pages} />
       {children}
     </main>
   );
