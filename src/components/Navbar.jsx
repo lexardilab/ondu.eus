@@ -1,12 +1,15 @@
 'use client';
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar({ lang, pages }) {
   const [openMenuId, setOpenMenuId] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const getTitle = (page) =>
     lang === "eu"
@@ -22,22 +25,35 @@ export default function Navbar({ lang, pages }) {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
-    setOpenMenuId(null); // cerrar submenus al abrir/cerrar mobile
+    setOpenMenuId(null);
   };
 
+  // Cerrar menú al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const menuClicked = menuRef.current?.contains(event.target);
+      const buttonClicked = buttonRef.current?.contains(event.target);
+      if (!menuClicked && !buttonClicked) {
+        setMobileMenuOpen(false);
+        setOpenMenuId(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <nav className="py-4 ">
-      <div className="px-4 mx-auto sm:px-6 lg:px-8 ">
+    <nav className="py-4">
+      <div className="px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center flex-shrink-0 ">
+          <div className="flex items-center flex-shrink-0">
             <Link href={`/${lang}`}>
               <Image
                 src="/logo2.svg"
                 alt="Logo"
                 width={200}
                 height={140}
-                className=""
               />
             </Link>
           </div>
@@ -53,8 +69,8 @@ export default function Navbar({ lang, pages }) {
                   <div className="flex items-center space-x-1">
                     <Link
                       href={`/${lang}/${page.slug.current}`}
-                      className="font-medium text-[#5f7254] "
-                      onClick={() => setOpenMenuId(null)} // cerrar menus al click
+                      className="font-medium text-[#5f7254]"
+                      onClick={() => setOpenMenuId(null)}
                     >
                       {getTitle(page)}
                     </Link>
@@ -63,7 +79,7 @@ export default function Navbar({ lang, pages }) {
                         onClick={() => toggleMenu(page._id)}
                         aria-expanded={isOpen}
                         aria-controls={`submenu-${page._id}`}
-                        className="text-[#5f7254]  focus:outline-none"
+                        className="text-[#5f7254] focus:outline-none"
                         aria-label={isOpen ? "Cerrar submenu" : "Abrir submenu"}
                       >
                         ▼
@@ -80,7 +96,7 @@ export default function Navbar({ lang, pages }) {
                         <li key={subpage._id}>
                           <Link
                             href={`/${lang}/${subpage.slug.current}`}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            className="block px-4 py-2 text-sm text-[#5f7254] hover:bg-gray-100 hover:text-[#4a5a44]"
                             onClick={() => setOpenMenuId(null)}
                           >
                             {getTitle(subpage)}
@@ -101,12 +117,12 @@ export default function Navbar({ lang, pages }) {
 
           {/* Hamburger button mobile */}
           <button
-            className="flex items-center justify-center p-2 text-[#5f7254] rounded-md md:hidden "
+            ref={buttonRef}
+            className="flex items-center justify-center p-2 text-[#5f7254] rounded-md md:hidden"
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             onClick={toggleMobileMenu}
           >
-            {/* Icono hamburguesa / X */}
             <svg
               className="w-6 h-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -116,19 +132,9 @@ export default function Navbar({ lang, pages }) {
               aria-hidden="true"
             >
               {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
@@ -137,6 +143,7 @@ export default function Navbar({ lang, pages }) {
 
       {/* Mobile menu */}
       <div
+        ref={menuRef}
         className={`md:hidden fixed top-16 left-0 right-0 bg-white border-b border-gray-200 shadow-md overflow-hidden transition-all duration-300 ease-in-out ${
           mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
@@ -152,7 +159,7 @@ export default function Navbar({ lang, pages }) {
                 <div className="flex items-center justify-between">
                   <Link
                     href={`/${lang}/${page.slug.current}`}
-                    className="block w-full py-2 font-medium text-[#5f7254] "
+                    className="block w-full py-2 font-medium text-[#5f7254]"
                     onClick={() => {
                       setMobileMenuOpen(false);
                       setOpenMenuId(null);
@@ -182,7 +189,7 @@ export default function Navbar({ lang, pages }) {
                       <li key={subpage._id}>
                         <Link
                           href={`/${lang}/${subpage.slug.current}`}
-                          className="block py-1 text-gray-700 hover:text-blue-600"
+                          className="block py-1 text-[#5f7254] hover:text-[#4a5a44]"
                           onClick={() => {
                             setMobileMenuOpen(false);
                             setOpenMenuId(null);
