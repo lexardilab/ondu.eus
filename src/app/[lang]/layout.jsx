@@ -72,6 +72,7 @@ export default async function LangLayout({ children, params }) {
     <main>
       <GoogleAnalytics />
       <CookieBanner lang={lang} />
+      <Navbar lang={lang} pages={pages} />
       {children}
     </main>
   );
