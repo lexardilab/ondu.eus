@@ -101,7 +101,7 @@ export default function Navbar({ lang, pages }) {
 
           {/* Hamburger button mobile */}
           <button
-            className="flex items-center justify-center p-2 text-gray-700 rounded-md md:hidden hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            className="flex items-center justify-center p-2 text-[#5f7254] rounded-md md:hidden "
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             onClick={toggleMobileMenu}
@@ -152,7 +152,7 @@ export default function Navbar({ lang, pages }) {
                 <div className="flex items-center justify-between">
                   <Link
                     href={`/${lang}/${page.slug.current}`}
-                    className="block w-full py-2 font-medium text-gray-800 hover:text-blue-600"
+                    className="block w-full py-2 font-medium text-[#5f7254] "
                     onClick={() => {
                       setMobileMenuOpen(false);
                       setOpenMenuId(null);
@@ -165,7 +165,7 @@ export default function Navbar({ lang, pages }) {
                       onClick={() => toggleMenu(page._id)}
                       aria-expanded={isOpen}
                       aria-controls={`submenu-mobile-${page._id}`}
-                      className="text-gray-600 hover:text-blue-600 focus:outline-none"
+                      className="text-[#5f7254] focus:outline-none"
                       aria-label={isOpen ? "Cerrar submenu" : "Abrir submenu"}
                     >
                       {isOpen ? "▲" : "▼"}
