@@ -1,9 +1,12 @@
 import CookieBanner from "@/components/CookieBanner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Navbar from "@/components/Navbar";
+import { getPages } from "@/lib/pages";
 
 export async function generateMetadata({ params }) {
+  params = await params;
   const { lang } = params;
+
   const baseUrl = "https://ondu.eus";
   const path = `/${lang}`;
 
@@ -59,23 +62,18 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function LangLayout({ children, params }) {
+export default async function LangLayout({ children, params }) {
+  params = await params;
   const { lang } = params;
 
+  const pages = await getPages();
+
   return (
-    <>
-      <header
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "1rem",
-        }}
-      ></header>
-      <main>
-        <GoogleAnalytics />
-        <CookieBanner lang={lang} />
-        {children}
-      </main>
-    </>
+    <main>
+      <GoogleAnalytics />
+      <CookieBanner lang={lang} />
+      <Navbar lang={lang} pages={pages} />
+      {children}
+    </main>
   );
 }

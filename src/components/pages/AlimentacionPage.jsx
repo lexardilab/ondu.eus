@@ -1,6 +1,6 @@
 import { PortableText } from '@portabletext/react';
 
-export default function ContactPage({ data, lang }) {
+export default function AlimentacionPage({ data, lang }) {
   const textos = {
     es: {
       subtitulo: 'Alimentacion',
@@ -12,9 +12,8 @@ export default function ContactPage({ data, lang }) {
 
   return (
     <main className="">
-        <p className=""> Pagina de contacto.</p>
+        <p className=""> Pagina de alimentacion.</p>
         {/* Aquí puedes insertar tu formulario */}
       </main>
   );
 }
-
