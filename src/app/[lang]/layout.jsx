@@ -70,11 +70,11 @@ export default async function LangLayout({ children, params }) {
   const pages = await getPages();
 
   return (
-      <body>
+      <>
         <GoogleAnalytics />
         <CookieBanner lang={lang} />
         <Navbar lang={lang} pages={pages} />
         {children}
-      </body>
+      </>
   );
 }
