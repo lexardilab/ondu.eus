@@ -1,14 +1,15 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
-    content: [
-      './app/**/*.{js,jsx,ts,tsx}',  // ajusta según estructura
-      './components/**/*.{js,jsx,ts,tsx}',
-    ],
-    theme: {
-      extend: {},
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        garamond: ['var(--font-eb-garamond)', 'serif'],
+      },
     },
-    plugins: [
-      require('@tailwindcss/typography'),
-    ],
-  }
-  
+  },
+  plugins: [],
+};

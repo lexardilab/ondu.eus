@@ -50,7 +50,7 @@ export default function Navbar({ lang, pages }) {
           <div className="flex items-center flex-shrink-0">
             <Link href={`/${lang}`}>
               <Image
-                src="/logo2.svg"
+                src="/logo.svg"
                 alt="Logo"
                 width={200}
                 height={140}
