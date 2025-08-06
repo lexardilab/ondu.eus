@@ -1,4 +1,5 @@
 import { PortableText } from '@portabletext/react';
+import Contact from '../Contact';
 
 export default function ContactPage({ data, lang }) {
   const textos = {
@@ -12,8 +13,7 @@ export default function ContactPage({ data, lang }) {
 
   return (
     <main className="">
-        <p className=""> Pagina de contacto.</p>
-        {/* Aquí puedes insertar tu formulario */}
+        <Contact/>
       </main>
   );
 }

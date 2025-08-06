@@ -1,4 +1,5 @@
 import { PortableText } from '@portabletext/react';
+import Image from 'next/image';
 
 export default function NutricionDeportivaPage({ data, lang }) {
   const textos = {
@@ -12,8 +13,7 @@ export default function NutricionDeportivaPage({ data, lang }) {
 
   return (
     <main className="">
-        <p className=""> Pagina de nutricion deportiva.</p>
-        {/* Aquí puedes insertar tu formulario */}
+        <Image src="/1.jpg" height="200" width="1000" alt=""></Image>
       </main>
   );
 }
