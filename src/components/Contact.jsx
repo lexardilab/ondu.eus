@@ -25,7 +25,16 @@ export default function ContactFooter() {
                   className="w-full p-2 mt-1 border border-gray-300 rounded-md"
                 />
               </div>
-  
+              <div>
+    <label className="block text-sm font-medium text-gray-700">Teléfono</label>
+    <input
+      type="tel"
+      name="phone"
+      required
+      placeholder="Tu número"
+      className="w-full p-2 mt-1 border border-gray-300 rounded-md"
+    />
+  </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Mensaje</label>
                 <textarea
@@ -69,8 +78,8 @@ export default function ContactFooter() {
               <h3 className="mb-2 text-xl font-semibold">Mikal San Miguel </h3>
 
               <p className="mb-4 text-gray-600">
-                Calle Ejemplo 123<br />
-                48001 Bilbao, España
+                Mendiko, 2<br />
+                01470 Amurrio, Alava
               </p>
               <p className="text-gray-600">
                 📞 +34 670 217 881<br />
