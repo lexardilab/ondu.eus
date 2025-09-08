@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        garamond: ['var(--font-eb-garamond)', 'serif'],
+        sans: ["var(--font-montserrat)", "sans-serif"], // Montserrat
+        serif: ["var(--font-eb-garamond)", "serif"],    // EB Garamond
       },
     },
   },
