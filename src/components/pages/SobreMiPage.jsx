@@ -116,6 +116,38 @@ export default function SobreMiPage({ data, lang }) {
           </div>
         </div>
       </div>
+      {/* COntactos */}
+
+      <div className="px-4 py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          {/* Email - izquierda */}
+          <div className="text-center md:text-left">
+            <a
+              href="mailto:mikalsanmiguel@ondu.eus"
+              className="text-2xl md:text-3xl font-bold  transition-colors"
+            >
+              mikalsanmiguel@ondu.eus
+            </a>
+          </div>
+
+          {/* Teléfono - centro */}
+          <div className="text-center">
+            <p className="text-2xl md:text-3xl font-bold text-gray-800">
+              670 217 881
+            </p>
+          </div>
+
+          {/* Web - derecha */}
+          <div className="text-center md:text-right">
+            <a
+              href="https://ondu.eus"
+              className="text-2xl md:text-3xl font-bold  transition-colors"
+            >
+              ondu.eus
+            </a>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
