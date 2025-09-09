@@ -1,8 +1,8 @@
 import CookieBanner from "@/components/CookieBanner";
+import Footer from "@/components/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Navbar from "@/components/Navbar";
 import { getPages } from "@/lib/pages";
-
 
 export async function generateMetadata({ params }) {
   params = await params;
@@ -70,11 +70,12 @@ export default async function LangLayout({ children, params }) {
   const pages = await getPages();
 
   return (
-      <>
-        <GoogleAnalytics />
-        <CookieBanner lang={lang} />
-        <Navbar lang={lang} pages={pages} />
-        {children}
-      </>
+    <>
+      <GoogleAnalytics />
+      <CookieBanner lang={lang} />
+      <Navbar lang={lang} pages={pages} />
+      {children}
+      <Footer />
+    </>
   );
 }

@@ -10,7 +10,7 @@ import NutricionClinicaPage from "@/components/pages/NutricionClinicaPage";
 import PerdidaPage from "@/components/pages/PerdidaDePesoPage";
 import AlimentacionPage from "@/components/pages/AlimentacionPage";
 import SobreMiPage from "@/components/pages/SobreMiPage";
-
+import AvisoLegalPage from "@/components/pages/AvisoLegalPage";
 
 // import NutritionPage from '@/components/pages/NutritionPage'
 
@@ -57,6 +57,7 @@ export default async function Page({ params }) {
     alimentacion: AlimentacionPage,
     "sobre-mi": SobreMiPage,
     contacto: ContactPage,
+    "aviso-legal": AvisoLegalPage,
   };
 
   const CustomComponent = customPages[slug];
