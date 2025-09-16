@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { FaInstagram } from "react-icons/fa6";
+import { FaFacebookF } from "react-icons/fa6";
+import { FaLinkedinIn } from "react-icons/fa6";
 
 export default function ContactFooter() {
   return (
@@ -81,7 +84,7 @@ export default function ContactFooter() {
           <div className="w-full h-full">
             <iframe
               title="Ubicación Ondu"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2893.642950444443!2d-2.937742!3d43.262985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4f444b0df123%3A0xa1e5f52c438e9f10!2sBilbao!5e0!3m2!1ses!2ses!4v1690402712345!5m2!1ses!2ses"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.4315320117694!2d-3.0044720234411963!3d43.0533908365617!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4faea15adbb269%3A0x83ea3d9de36ad007!2sMendiko%20Kalea%2C%202%2C%2001470%20Amurrio%2C%20Araba!5e0!3m2!1ses!2ses!4v1758008580707!5m2!1ses!2ses"
               width="100%"
               height="100%"
               allowFullScreen=""
@@ -112,6 +115,11 @@ export default function ContactFooter() {
               <br />
               📧 mikalsanmiguel@ondu.eus
             </p>
+            <div className="pt-4 flex items-center gap-4">
+              <FaInstagram className="w-6 h-6 " />
+              <FaFacebookF className="w-6 h-6 " />
+              <FaLinkedinIn className="w-6 h-6 " />
+            </div>
           </div>
         </div>
       </div>

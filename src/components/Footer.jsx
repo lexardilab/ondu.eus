@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PiInstagramLogoLight } from "react-icons/pi";
 import { PiCopyrightLight } from "react-icons/pi";
 import { PiFacebookLogoLight } from "react-icons/pi";
+import { PiLinkedinLogoLight } from "react-icons/pi";
 
 export default function Footer() {
   return (
@@ -30,6 +31,9 @@ export default function Footer() {
           </span>
           <span className="pl-1">
             <PiFacebookLogoLight className="" />
+          </span>
+          <span className="pl-1">
+            <PiLinkedinLogoLight />
           </span>
         </div>
       </div>
