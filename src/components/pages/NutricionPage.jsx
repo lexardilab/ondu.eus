@@ -1,11 +1,13 @@
 // src/components/pages/NutricionPage.jsx
 
+import NutricionHeroOne from "../NutricionHeroOne";
+import NutricionHeroTwo from "../NutricionHeroTwo";
+
 export default function NutricionPage({ data }) {
-    return (
-      <main className="">
-        <p className=""> Pagina de nutricion.</p>
-        {/* Aquí puedes insertar tu formulario */}
-      </main>
-    )
-  }
-  
+  return (
+    <main className="">
+      <NutricionHeroOne />
+      <NutricionHeroTwo />
+    </main>
+  );
+}
