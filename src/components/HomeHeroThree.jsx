@@ -18,7 +18,7 @@ export default function DosColumnas() {
         {/* Columna derecha: texto */}
         <div className="w-full">
           <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-6">
-            Servicios que tenemos en Ondudev
+            Servicios que tenemos en Ondu
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-600 text-base leading-relaxed">
             {/* Lista izquierda */}
