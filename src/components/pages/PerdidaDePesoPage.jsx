@@ -28,8 +28,8 @@ export default function PerdidaDePesoPage({ data, lang }) {
           Nutrición personalizada
         </h2>
         <p className="text-base md:text-lg text-gray-600">
-          Te acompañamos en el proceso de aprender a comer mejor, con pautas
-          adaptadas a tus necesidades y estilo de vida.
+          En ONDU consideramos el peso, una cifra que no necesariamente habla de
+          salud y no nos debe obsesionar.
         </p>
       </div>
     </section>

@@ -2,10 +2,21 @@ import Image from "next/image";
 
 export default function ContactFooter() {
   return (
-    <section className="bg-gray-100">
+    <section className="relative min-h-screen">
+      {/* 🌄 Imagen de fondo */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/foto_8.webp" // 👈 pon tu imagen en /public
+          alt="Fondo contacto"
+          fill
+          priority
+          className="object-cover"
+        />
+      </div>
+
       {/* 📝 Formulario centrado */}
       <div className="max-w-6xl px-4 py-12 mx-auto">
-        <div className="p-8 bg-white rounded-lg shadow-md">
+        <div className="p-8 bg-white/80 backdrop-blur-sm rounded-lg shadow-md">
           <h2 className="mb-4 text-2xl font-semibold">Contáctanos</h2>
           <form className="space-y-4">
             <div>
@@ -29,6 +40,7 @@ export default function ContactFooter() {
                 className="w-full p-2 mt-1 border border-gray-300 rounded-md"
               />
             </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Teléfono
@@ -74,12 +86,12 @@ export default function ContactFooter() {
               height="100%"
               allowFullScreen=""
               loading="lazy"
-              className="w-full h-full border-0"
+              className="w-full h-full border-0 rounded-lg"
             ></iframe>
           </div>
 
           {/* 📄 Columna 2: Dirección */}
-          <div className="flex flex-col justify-end p-8">
+          <div className="flex flex-col justify-end p-8 bg-white/80 backdrop-blur-sm rounded-lg">
             <div>
               <Image
                 className="pb-4"
@@ -89,7 +101,7 @@ export default function ContactFooter() {
                 alt=""
               />
             </div>
-            <h3 className="mb-2 text-xl font-semibold">Mikal San Miguel </h3>
+            <h3 className="mb-2 text-xl font-semibold">Mikal San Miguel</h3>
 
             <p className="mb-4 text-gray-600">
               Mendiko, 2<br />
