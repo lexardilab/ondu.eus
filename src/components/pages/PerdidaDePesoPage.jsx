@@ -24,7 +24,7 @@ export default function PerdidaDePesoPage({ data, lang }) {
         />
 
         {/* Recuadro blanco desde la derecha */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full md:w-3/5 bg-white/95 py-12 px-8 md:px-16 shadow-lg">
+        <div className="bg-[#f5eddb] absolute right-0 top-1/2 -translate-y-1/2 w-full md:w-3/5 py-12 px-8 md:px-16 shadow-lg">
           <h2 className="text-2xl md:text-4xl font-semibold mb-4 text-gray-800">
             Nutrición personalizada
           </h2>
@@ -34,7 +34,7 @@ export default function PerdidaDePesoPage({ data, lang }) {
           </p>
         </div>
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 bg-[#f5eddb]">
         {/* Columna 1: Imagen */}
         <div className="flex justify-center">
           <Image

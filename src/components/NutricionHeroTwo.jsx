@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function NutricionHeroTwo() {
   return (
-    <section className="w-full bg-white py-16 px-6">
+    <section className="w-full py-16 px-6 bg-[#dde3c6]">
       <div className="max-w-7xl mx-auto ">
         <p className="text-base md:text-lg text-gray-600 leading-relaxed">
           En Ondu tenemos más de 15 años de experiencia en el abordaje y

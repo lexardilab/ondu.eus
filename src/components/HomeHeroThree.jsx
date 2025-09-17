@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function DosColumnas() {
   return (
-    <section className="w-full bg-white py-16 px-6">
+    <section className="w-full  py-16 px-6 bg-[#5f7254]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Columna izquierda: imagen */}
         <div className="relative w-full h-[400px] md:h-[500px]">
@@ -17,10 +17,10 @@ export default function DosColumnas() {
 
         {/* Columna derecha: texto */}
         <div className="w-full">
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-6">
-            Servicios que tenemos en Ondu
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">
+            Servicios :
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-600 text-base leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-white text-base leading-relaxed">
             {/* Lista izquierda */}
             <ul className="list-disc list-inside space-y-2">
               <li>Plan nutricional personalizado</li>

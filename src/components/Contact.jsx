@@ -5,7 +5,7 @@ import { FaLinkedinIn } from "react-icons/fa6";
 
 export default function ContactFooter() {
   return (
-    <section className="relative min-h-screen">
+    <section className="relative min-h-screen bg-[#dde3c6]">
       {/* 🌄 Imagen de fondo */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -19,7 +19,7 @@ export default function ContactFooter() {
 
       {/* 📝 Formulario centrado */}
       <div className="max-w-6xl px-4 py-12 mx-auto">
-        <div className="p-8 bg-white/80 backdrop-blur-sm rounded-lg shadow-md">
+        <div className="p-8 backdrop-blur-sm rounded-lg shadow-md">
           <h2 className="mb-4 text-2xl font-semibold">Contáctanos</h2>
           <form className="space-y-4">
             <div>
@@ -78,7 +78,7 @@ export default function ContactFooter() {
       </div>
 
       {/* 🌍 Columnas a pantalla completa */}
-      <div className="w-screen pb-6">
+      <div className="w-screen pb-6 bg-[#dde3c6]">
         <div className="grid grid-cols-1 md:grid-cols-2 h-[500px]">
           {/* 🗺️ Columna 1: Mapa */}
           <div className="w-full h-full">
@@ -94,7 +94,7 @@ export default function ContactFooter() {
           </div>
 
           {/* 📄 Columna 2: Dirección */}
-          <div className="flex flex-col justify-end p-8 bg-white/80 backdrop-blur-sm rounded-lg">
+          <div className="flex flex-col justify-end p-8 backdrop-blur-sm rounded-lg">
             <div>
               <Image
                 className="pb-4"

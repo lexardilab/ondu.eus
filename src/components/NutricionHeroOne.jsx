@@ -13,9 +13,9 @@ export default function NutricionHeroOne() {
       />
 
       {/* Recuadro blanco desde la derecha */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full md:w-2/5 bg-white/95 py-2 px-8 md:px-16 shadow-lg">
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full md:w-2/5 bg-[#dde3c6] py-2 px-8 md:px-16 shadow-lg">
         <div>
-          <h1 className="text-4xl pb-2">Nutrición</h1>
+          <h1 className="text-4xl pb-2 text-gray-600">Nutrición</h1>
         </div>
         <p className="text-base md:text-lg text-gray-600 pb-4">
           En ONDU te enseñamos a nutrirte de forma que el estrés del día a día
