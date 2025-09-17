@@ -33,7 +33,7 @@ export default function SobreMiPage({ data, lang }) {
 
   return (
     <>
-      <div className="px-4 grid grid-cols-1 md:grid-cols-2 overflow-hidden">
+      <div className="px-4 grid grid-cols-1 md:grid-cols-2 overflow-hidden bg-[#dde3c6]">
         {/* Texto columna izquierda */}
         <div className="flex flex-col justify-between py-6">
           {/* Texto arriba */}
@@ -52,7 +52,7 @@ export default function SobreMiPage({ data, lang }) {
             </p>
             <button
               onClick={() => setExpanded(!expanded)}
-              className="mt-2 text-lg   hover:underline"
+              className="mb-2 text-lg   hover:underline"
             >
               {expanded
                 ? textos[lang]?.leerMenos + " −"

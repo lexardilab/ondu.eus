@@ -5,7 +5,7 @@ import { FaLinkedinIn } from "react-icons/fa6";
 
 export default function ContactFooter() {
   return (
-    <section className="relative min-h-screen bg-[#dde3c6]">
+    <section className="relative min-h-screen">
       {/* 🌄 Imagen de fondo */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -78,7 +78,7 @@ export default function ContactFooter() {
       </div>
 
       {/* 🌍 Columnas a pantalla completa */}
-      <div className="w-screen pb-6 bg-[#dde3c6]">
+      <div className="w-screen pb-6">
         <div className="grid grid-cols-1 md:grid-cols-2 h-[500px]">
           {/* 🗺️ Columna 1: Mapa */}
           <div className="w-full h-full">
@@ -94,7 +94,7 @@ export default function ContactFooter() {
           </div>
 
           {/* 📄 Columna 2: Dirección */}
-          <div className="flex flex-col justify-end p-8 backdrop-blur-sm rounded-lg">
+          <div className="flex flex-col justify-end p-8 backdrop-blur-sm rounded-lg bg-[#dde3c6]">
             <div>
               <Image
                 className="pb-4"
@@ -104,7 +104,9 @@ export default function ContactFooter() {
                 alt=""
               />
             </div>
-            <h3 className="mb-2 text-xl font-semibold">Mikal San Miguel</h3>
+            <h3 className="mb-2 text-xl font-semibold text-gray-600">
+              Mikal San Miguel
+            </h3>
 
             <p className="mb-4 text-gray-600">
               Mendiko, 2<br />
@@ -115,7 +117,7 @@ export default function ContactFooter() {
               <br />
               📧 mikalsanmiguel@ondu.eus
             </p>
-            <div className="pt-4 flex items-center gap-4">
+            <div className="pt-4 flex items-center gap-4 text-gray-600">
               <FaInstagram className="w-6 h-6 " />
               <FaFacebookF className="w-6 h-6 " />
               <FaLinkedinIn className="w-6 h-6 " />
