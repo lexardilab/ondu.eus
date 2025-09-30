@@ -35,10 +35,14 @@ export default function SobreMiPage({ data, lang }) {
     <>
       <div className="px-4 grid grid-cols-1 md:grid-cols-2 overflow-hidden bg-[#dde3c6]">
         {/* Texto columna izquierda */}
-        <div className="flex flex-col justify-between py-6">
+        <div className="flex flex-col justify-between">
           {/* Texto arriba */}
-          <h1 className="text-7xl font-black mb-4">MIKAL SAN MIGUEL</h1>
-
+          <h1 className="text-6xl font-black text-gray-600">
+            MIKAL SAN MIGUEL
+          </h1>
+          <h1 className="text-xl font-black text-gray-600">
+            Dietista-Nutricionista Colegiada nºEUS00316.
+          </h1>
           {/* Texto abajo con "leer más" */}
           <div className="text-lg w-3/4">
             <p
@@ -52,7 +56,7 @@ export default function SobreMiPage({ data, lang }) {
             </p>
             <button
               onClick={() => setExpanded(!expanded)}
-              className="mb-2 text-lg   hover:underline"
+              className="mb-12 text-lg   hover:underline"
             >
               {expanded
                 ? textos[lang]?.leerMenos + " −"

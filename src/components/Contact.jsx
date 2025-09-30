@@ -23,7 +23,7 @@ export default function ContactFooter() {
           <h2 className="mb-4 text-2xl font-semibold">Contáctanos</h2>
           <form className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-900">
                 Nombre
               </label>
               <input
