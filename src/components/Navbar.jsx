@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
@@ -49,12 +49,7 @@ export default function Navbar({ lang, pages }) {
           {/* Logo */}
           <div className="flex items-center flex-shrink-0">
             <Link href={`/${lang}`}>
-              <Image
-                src="/logo.svg"
-                alt="Logo"
-                width={200}
-                height={140}
-              />
+              <Image src="/logo.svg" alt="Logo" width={200} height={140} />
             </Link>
           </div>
 
@@ -79,7 +74,7 @@ export default function Navbar({ lang, pages }) {
                         onClick={() => toggleMenu(page._id)}
                         aria-expanded={isOpen}
                         aria-controls={`submenu-${page._id}`}
-                        className="text-[#5f7254] focus:outline-none"
+                        className="text-[#656039] focus:outline-none"
                         aria-label={isOpen ? "Cerrar submenu" : "Abrir submenu"}
                       >
                         ▼
@@ -132,9 +127,19 @@ export default function Navbar({ lang, pages }) {
               aria-hidden="true"
             >
               {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>

@@ -10,10 +10,10 @@ export default function HomeHeroTwo() {
           equilibrada y ejercicio físico regular, son dos elementos
           fundamentales para llevar una vida saludable.
         </p>
-        <h2 className="text-xl md:text-4xl font-bold text-gray-800 mb-6">
+        <h2 className="text-xl md:text-4xl font-bold mb-6 text-[#656039]">
           <br />
           En Ondu, nuestra nutricionista te enseña, valora y te guía para tener
-          una adecuada alimentación para ayudarte a mejorar tu calidad de vida.{" "}
+          una adecuada alimentación para ayudarte a mejorar tu calidad de vida.
         </h2>
         <p className="text-base md:text-lg text-gray-600 leading-relaxed">
           - Atención personalizada

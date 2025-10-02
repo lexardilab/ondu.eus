@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function DosColumnas() {
   return (
-    <section className="w-full  py-16 px-6 bg-[#5f7254]">
+    <section className="w-full  py-16 px-6 bg-[#656039]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Columna izquierda: imagen */}
         <div className="relative w-full h-[400px] md:h-[500px]">
