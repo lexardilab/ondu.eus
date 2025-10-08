@@ -6,7 +6,7 @@ export default function HomePage({ data, lang }) {
     <>
       <main className="flex items-center justify-center px-12 pt-48">
         <Image
-          src="/home.webp"
+          src="/home.svg"
           width={400}
           height={600}
           alt="Ondu Zentroa"
